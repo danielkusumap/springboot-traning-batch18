@@ -1,0 +1,24 @@
+package com.bootcamp.pokemonservice.dto.reponse;
+
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
+import java.util.UUID;
+
+@Data
+@NoArgsConstructor
+@AllArgsConstructor
+@Builder
+public class BaseResponse<T> {
+    @Builder.Default
+    private UUID reqId = UUID.randomUUID();
+
+    @Builder.Default
+    private String status = "T";
+
+    @Builder.Default
+    private String message = "Succuss";
+    private T data;
+}

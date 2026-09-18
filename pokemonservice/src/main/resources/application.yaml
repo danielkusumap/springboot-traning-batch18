@@ -1,0 +1,47 @@
+spring:
+  application:
+    name: pokemonservice
+  datasource:
+    # jdbc:nama_db://host:port/db
+    url: jdbc:postgresql://localhost:5432/training_db
+    username: postgres
+    password: postgres
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+    properties:
+      hibernate:
+        format-sql: true
+    database-platform: org.hibernate.dialect.PostgreSQLDialect
+  cache:
+    type: redis
+    host: localhost
+    port: 6379
+  servlet:
+    multipart:
+      max-file-size: 20MB
+      max-request-size: 20MB
+
+server:
+  servlet:
+    context-path: /pokemon
+  port: 9200
+
+eureka:
+  instance:
+    prefer-ip-address: true
+  client:
+    service-url:
+      defaultZone: http://localhost:8761/eureka/
+
+kafka:
+  bootstrap-servers: localhost:9092
+
+minio:
+  url: http://localhost:9000
+  access:
+    name: minioadmin
+    secret: minioadmin
+  bucket:
+    name: batch18

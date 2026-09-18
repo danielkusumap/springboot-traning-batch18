@@ -1,0 +1,20 @@
+services:
+  redis-batch18:
+    image: redis:7.2-alpine
+    container_name: redis-batch18
+    restart: always
+    ports:
+      - "6379:6379"
+    command: redis-server --save 60 1 --loglevel warning
+
+  # UI untuk melihat dan mengelola data Redis
+  redis-insight-batch18:
+    image: redis/redisinsight:latest
+    container_name: redis-insight-batch18
+    restart: always
+    ports:
+      - "5540:5540"
+    depends_on:
+      - redis-batch18
+
+#  docker compose -f docker-compose-redis.yaml up -d
